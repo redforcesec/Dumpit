@@ -1,0 +1,129 @@
+<br /><br />
+        <div class="row" ng-controller="attack">
+            <div class="col-sm-12 col-md-8 offset-md-2 shareit-box text-center">
+                <a href="#!/home" class="back"><i class="oi oi-arrow-left"></i> Home </a>
+                <br /><br />
+                <h4>{{target.ip}}</h4>
+                <br />
+                
+                <div class="row">
+                    <div class="col-6 text-right" style="padding-top: 5px;">
+                        <h5>Auto Connect?</h5>
+                    </div>
+                    <div class="col-6 text-left">
+                        <label class="switch">
+                          <input type="checkbox" name="auto_connect" title="Auto Connect" ng-model="auto_connect" />
+                          <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <br />
+                <div class="">
+                    <div ng-show="is_authorized">
+                        You are authorized to download files, ready to proceed
+                        <span class="badge badge-success">Success</span>
+                    </div>
+                    <div ng-hide="is_authorized">
+                        Your device is not yet authorized to download files
+                        <span class="badge badge-danger">Unauthorized</span>
+                        <br />
+                        <div class="alert alert-danger" ng-show="connect_error.status">{{connect_error.msg}}</div>
+                        <br />
+                        
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="src_ip">Your IP address <small>(We need your IP address to construct SHAREit connection packet.)</small></label>
+                            </div>
+                            <div class="form-group col-8 text-right offset-1">
+                                <input type="text" class="form-control" name="src_ip" ng-model="source.ip" placeholder="e.g. 192.168.43.165" value="{{source.ip}}" />
+                            </div>
+                            <div class="form-group col-1 text-left">
+                                <button type="button" class="btn btn-success" ng-click="connect()">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <br />
+                <div class="row page-options">
+                    <div class="col-12 col-md-6 page-option">
+                        <div class="row">
+                            <div class="col-6 text-right logo" data-toggle="modal" data-target="#file_modal">
+                                <img src="/assets/images/icons/download.png" alt="Download file" />
+                            </div>
+                            <div class="col-6 text-left details" data-toggle="modal" data-target="#file_modal">
+                                <h4>File Download</h4>
+                            </div>
+                        </div>
+                    </div>
+					<!-------- ROW ------------->
+					<div class="col-12 col-md-6 page-option">
+						<a href="#!/attack/{{target.ip}}/gallery">
+                            <div class="row">
+                                
+                                    <div class="col-6 text-right logo">
+                                        <img src="/assets/images/icons/gallery.png" alt="Other Devices" />
+                                    </div>
+                                    <div class="col-6 text-left details">
+                                        <h4>Gallery</h4>
+                                    </div>                  
+    						</div>
+                        </a>
+					</div>
+					<!-------- ROW ------------->
+					<div class="col-12 col-md-6 page-option">
+                        <a href="#!/attack/{{target.ip}}/gallery">
+    						<div class="row">
+                                <div class="col-6 text-right logo" data-toggle="modal" data-target="#subnet_modal">
+                                    <img src="/assets/images/icons/contacts.png" alt="Android" />
+                                </div>
+                                <div class="col-6 text-left details" data-toggle="modal" data-target="#subnet_modal">
+                                    <h4>Contacts</h4>
+                                </div>
+    						</div>
+                        </a>
+					</div>
+					<!-------- ROW ------------->
+					<div class="col-12 col-md-6 page-option">
+						<div class="row">
+                            <div class="col-6 text-right logo" data-toggle="modal" data-target="#warning_modal" >
+                                <img src="/assets/images/icons/fb.png" alt="Other Devices" />
+                            </div>
+                            <div class="col-6 text-left details" data-toggle="modal" data-target="#warning_modal">
+                                <h4>Facebook Token</h4>
+                            </div>                    
+						</div>
+					</div>
+					<!-------- ROW ------------->
+					<div class="col-12 col-md-6 page-option">
+						<div class="row">
+                            <div class="col-6 text-right logo" data-toggle="modal" data-target="#subnet_modal">
+                                <img src="/assets/images/icons/wifi.svg" alt="Android"/>
+                            </div>
+                            <div class="col-6 text-left details" data-toggle="modal" data-target="#subnet_modal">
+                                <h4>Hotspot Password</h4>
+                            </div>
+						</div>
+					</div>
+					<!-------- ROW ------------->
+					<div class="col-12 col-md-6 page-option">
+						<div class="row">
+                            <div class="col-6 text-right logo" data-toggle="modal" data-target="#juicy_files_modal" >
+                                <img src="/assets/images/icons/data.png" alt="Other Devices" />
+                            </div>
+                            <div class="col-6 text-left details" data-toggle="modal" data-target="#juicy_files_modal">
+                                <h4>Juicy Files</h4>
+                            </div>
+                        </div>                    
+                    </div>
+                    
+                </div><!--------------- .page-options end ------------------>
+            </div><!--------------- .shareit-box end ------------------>
+            
+            
+            <div ng-include="'/static/modal_file_download.html'"></div>
+            <div ng-include="'/static/modal_juicy_files.html'"></div>
+            <div ng-include="'/static/modal_warning.html'"></div>
+            
+        </div>

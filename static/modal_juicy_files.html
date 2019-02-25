@@ -1,0 +1,33 @@
+        <div class="modal fade" id="juicy_files_modal" tabindex="-1" role="dialog" aria-labelledby="juicy_files_modal_title" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="juicy_files_modal_title">Download Juicy Files</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div id="juicy_files">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <th>File Type</th>
+                                <th>File Name</th>
+                                <th>File Description</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="(filename, file) in juicy_files">
+                                    <td><img src="/assets/images/icons/file_{{file.type}}.png" onerror="this.src='/assets/images/icons/file_unknown.png';" alt="{{file.type}}" /></td>
+                                    <td>{{filename}}</td>
+                                    <td>{{file.comments}}</td>
+                                    <td><button type="button" class="btn btn-success" ng-click="download_juicy(filename);">Download</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br />
+                  </div>
+                </div>
+              </div>
+            </div>

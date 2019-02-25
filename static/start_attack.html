@@ -1,0 +1,40 @@
+<br /><br />
+        <div class="row" ng-controller="start_attack">
+            <div class="col-sm-12 col-md-8 offset-md-2 shareit-box text-center">
+                <a href="#!/home" class="back"><i class="oi oi-arrow-left"></i> Home </a>
+                <br /><br />
+                <h4>Select your target type!</h4>
+                <p>Remember device type in <a href="#!/discover">discover</a> section? Don't know? Try to <a href="#!/discover">discover</a> it</p>
+                <br />
+                <div class="row page-options">
+                   <!-------- Android Button ------------->
+                   <div class="col-12 col-md-6 page-option">
+                        <div class="row">
+                            <div class="col-6 text-right logo" data-toggle="modal" data-target="#subnet_modal">
+                                <img src="/assets/images/icons/android-flat.png" alt="Android" style="width: 100px;" />
+                            </div>
+                            <div class="col-6 text-left details" data-toggle="modal" data-target="#subnet_modal">
+                                <h4>Android</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-------- Other Devices Button ------------->
+                   <div class="col-12 col-md-6 page-option">
+                        <div class="row">
+                            <div class="col-6 text-right logo" data-toggle="modal" data-target="#warning_modal" style="cursor: pointer;">
+                                <img src="/assets/images/icons/other.png" alt="Other Devices" style="width: 100px;" />
+                            </div>
+                            <div class="col-6 text-left details" data-toggle="modal" data-target="#warning_modal">
+                                <h4>Other</h4>
+                            </div>
+                        </div>
+                   </div>                   
+                </div>  <!--------------- .page-options end ------------------>         
+            </div> <!--------------- .shareit-box end ------------------>
+            
+            
+            
+            <div ng-include="'/static/modal_scan_network.html'"></div>
+            <div ng-include="'/static/modal_warning.html'"></div>
+            
+        </div>

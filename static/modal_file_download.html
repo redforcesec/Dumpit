@@ -1,0 +1,36 @@
+        <div class="modal fade" id="file_modal" tabindex="-1" role="dialog" aria-labelledby="file_modal_title" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="file_modal_title">Download File</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form novalidate="" name="download_form">
+                        <div class="alert alert-danger" ng-show="download_form.id.$touched && download_form.id.$invalid">
+                            <span ng-show="download_form.id.$error.required">Please enter the {{no_id_types.indexOf(file.type) !== -1 ? file.type == 'file'? 'path':'packagename' : 'id'}} of the {{file.type}} you want to download</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="type"><b>File Type</b></label>
+                            <select class="form-control" name="type" required="" ng-model="file.type" ng-options="type for type in file_types"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="id"><b>{{file.type}} {{no_id_types.indexOf(file.type) !== -1 ? file.type == 'file'? 'path':'packagename' : 'id'}}</b></label>
+                            <input type="text" class="form-control" name="id" required="" ng-model="file.id" value="{{file.id}}" placeholder="{{no_id_types.indexOf(file.type) !== -1 ? file.type == 'file'? 'path':'packagename' : 'id'}}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="format"><b>File Format</b></label>
+                            <select class="form-control" name="format" required="" ng-model="file.format" ng-options="format for format in file_formats"></select>
+                        </div>                        
+                    </form>
+                    <br />
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" ng-disabled="download_form.$invalid" ng-click="download_url()">Download</button>
+                  </div>
+                </div>
+              </div>
+            </div>

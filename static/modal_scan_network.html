@@ -1,0 +1,52 @@
+        <div class="modal fade" id="subnet_modal" tabindex="-1" role="dialog" aria-labelledby="subnet_modal_title" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="subnet_modal_title">Scan/Attack</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form novalidate="" name="scan_modal">
+                        <div class="alert alert-danger" ng-show="scan_modal.subnet.$touched && scan_modal.subnet.$invalid">
+                            <span ng-show="scan_modal.subnet.$error.required">Please enter the IP/subnet you want to scan/attack</span>
+                            <span ng-show="scan_modal.subnet.$error.pattern">Please enter valid IPv4 address</span>
+                        </div>
+                        <label for="subnet"><b>IP of the subnet you want to scan/attack</b></label>
+                        <input type="text" class="form-control" name="subnet" required="" ng-pattern="ip_regex" ng-model="subnet.ip" ng-model-options="{updateOn:'blur'}" value="{{subnet.ip}}" placeholder="Please enter a subnet IP (e.g. 192.168.43.1)" />
+                    </form>
+                    <br />
+                    <div id="subnet_scan_results" ng-show="scan_started && !response_error">
+                        <div ng-hide="scan_finished" class="loader-radar" style="width:100px;padding-top:100px;"></div>
+                        <div ng-show="scan_finished && devices.length < 1" class="alert alert-warning">No SHAREit devices found? Make sure you are connected to the same network and try again</div>
+                        <br />
+                        <table class="table table-striped" ng-show="devices.length > 0">
+                            <thead>
+                                <tr>
+                                    <th>Index</th>
+                                    <th>IP address</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="ip in devices">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{ip}}</td>
+                                    <td><button class="btn btn-success" ng-click="start_attack(ip)">Start Attack</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p>Default gateway for Android hotspots is 192.168.43.1, If you would like to scan another network, just enter any IP in this subnet (e.g. 192.168.173.1)</p>
+                    <p>If you already know the IP address of the vulnerable device, click "attack" button to proceed</p>                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="scan_subnet()">Scan Subnet</button>
+                    <button type="button" class="btn btn-success" ng-click="start_attack()">Attack</button>
+                  </div>
+                </div>
+              </div>
+            </div>

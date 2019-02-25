@@ -1,0 +1,46 @@
+<br /><br />
+        <div class="row" ng-controller="attack_gallery">
+            <div class="col-sm-12 col-md-8 offset-md-2 shareit-box text-center">
+                <a href="#!/attack/{{target.ip}}" class="back"><i class="oi oi-arrow-left"></i> Other options </a>
+                <br /><br />
+                <div id="gallery_nav">
+                    <button type="button" class="btn" ng-class="gallery.current_album == album ? 'btn-primary' : 'btn-secondary'" ng-repeat="(index, album) in gallery.albums" ng-click="change_album(album);" style="margin-right: 10px;">{{album}}s</button>
+                </div>
+                <br />
+                <h4>BruteForce {{gallery.current_album}}s</h4>
+                <br />
+                <div class="alert alert-danger" ng-show="connect_error.status">{{connect_error.msg}}</div>
+                <form>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <input type="number" class="form-control" name="id_from" ng-model="bruteforce[gallery.current_album].from" ng-model-options="{updateOn:'blur'}" value="{{bruteforce[gallery.current_album].from}}"  placeholder="ID to start bruteforce from" />
+                        </div>
+                        <div class="form-group col-4">
+                            <input type="number" class="form-control" name="id_to" ng-model="bruteforce[gallery.current_album].to" ng-model-options="{updateOn:'blur'}" value="{{bruteforce[gallery.current_album].to}}" placeholder="ID to stop bruteforcing at" />
+                        </div>
+                        <div class="form-group col-4">
+                            <input type="number " class="form-control" name="id_step" ng-model="bruteforce[gallery.current_album].step" ng-model-options="{updateOn:'blur'}" value="{{bruteforce[gallery.current_album].step}}" placeholder="Step between each id" />
+                        </div>  
+                        <div class="form-group col-4 offset-4">
+                            <button type="button" class="btn btn-success" ng-click="restart_bruteforce()">Bruteforce</button>
+                            <button type="button" class="btn btn-danger" ng-disabled="bruteforce.stopped" ng-click="pause_bruteforce()">Stop</button>
+                        </div>
+                    </div>                                      
+                </form>
+                <div id="gallery">
+                    <div class="loader-radar" ng-show="thumbs[gallery.current_album].length == 0 && (!bruteforce.stopped || gallery.retrieving_media)"></div>
+                    <div class="row" ng-show="gallery.assets_with_thumbs.indexOf(gallery.current_album) !== -1">
+                        <div class="col-6 col-md-4 gallery_item" ng-repeat="thumb in thumbs[gallery.current_album]">
+                            <img class="img-fluid" src="{{thumb}}" />
+                        </div>
+                    </div>
+                    
+                    <div class="row" ng-hide="gallery.assets_with_thumbs.indexOf(gallery.current_album) !== -1">
+                        <div class="col-6 col-md-4" ng-repeat="thumb in thumbs[gallery.current_album]">
+                            <a ng-href="{{thumb}}"><img class="img-fluid" src="/assets/images/icons/file_unknown.png" alt="{{thumb}}"/></a>
+                        </div>
+                    </div>
+                </div>
+                        
+            </div>
+        </div>
