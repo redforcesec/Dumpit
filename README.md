@@ -2,10 +2,10 @@
 DUMPit is an exploit for SHAREit mobile app abusing two recently discovered vulnerabilities affecting SHAREit Android application <= v 4.0.38. The first one allows an attacker to bypass SHAREit device authentication mechanism, and the other one enables the authenticated attacker to download arbitrary files from the user’s device. Both vulnerabilities were reported to the vendor and patches have been released.
 
 # Demo
-[![DUMPit exploit demo](http://i.imgur.com/7YTMFQp.png)](https://youtube.com "DUMPit exploit demo - Click to Watch!")
+[![DUMPit exploit demo](https://i.imgur.com/0oASId5.png)](https://youtube.com "DUMPit exploit demo - Click to Watch!")
 
 # Resources
-- [Full writeup](https://blog.redforce.io/?p=421)
+- [Full writeup](https://blog.redforce.io/shareit-vulnerabilities-enable-unrestricted-access-to-adjacent-devices-files)
 
 # Usage
 ```bash
