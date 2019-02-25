@@ -8,8 +8,14 @@ DUMPit is an exploit for SHAREit mobile app abusing two recently discovered vuln
 - [Full writeup](https://blog.redforce.io/shareit-vulnerabilities-enable-unrestricted-access-to-adjacent-devices-files)
 
 # Usage
+To launch the exploit server with GUI (Tested on windows,linux)
 ```bash
 python server.py
+```
+
+To launch the autopwn module (Works on linux only)
+```bash
+python autopwn.py
 ```
 
 # Legal disclaimer
